@@ -132,6 +132,14 @@
 				if(!$(this).is($(lastClicked))){
 					testHit($(this));
 					
+				}else{
+					
+					setTimeout(function(){ 
+							
+						resetImg();
+							
+					}, 1000);
+					
 				}
 				
 				lastClicked = undefined;
@@ -145,6 +153,7 @@
 			
 			console.log(totalPlayCount);
 			$("#contagem_jogadas").text(totalPlayCount);
+			
 			
 		
 		});
@@ -166,3 +175,13 @@
 	</body>
 </html>
 		
+	
+
+
+
+
+
+
+
+<script>
+</script>
