@@ -1,0 +1,159 @@
+<html>
+	<head>
+		
+		<style>
+			body{
+				margin:0px;
+				background-color: #ddffdd; 
+			}a{
+				text-decoration: none;
+				
+			}ul{
+				list-style: none;
+			}
+			.cronometro{
+				border: 10px solid white;
+				max-height: 200px;
+				max-width: 100%;
+				margin: auto;
+				font-size: 100px;
+				padding: 5px;
+				border-radius: 5px 5px 5px 5px;
+				margin-top: 5%;
+				text-align: center;
+			}
+			.cabeçalho{
+				width: 80%;
+				overflow: hidden;
+				border-radius: 5px 5px 5px 5px;
+				background-color: green;
+				align-items: center;
+				text-align: center;
+				z-index: 100;
+				position: fixed;
+				top: 0;
+
+			}.separador{
+				width:80%;
+				margin: 0 auto;
+				position: relative;
+				height: 100%;
+				padding-bottom: 5px;
+				
+				
+				background-color: #002f0036;
+			}.rodape{
+				position: absolute;
+				bottom: 0;
+				min-height: 5%;
+				align-items: center;
+				text-align: center;
+				width: 100%;
+				overflow: hidden;
+				font-size: 20px;
+				
+			}.destaque{
+				color: white;
+				font: 700 60px "Verdana";
+				
+			}#hora, #minuto, #segundo{
+				color: white;
+			}.full-lateral{
+				border: 2px solid black;
+				width: 90%;
+				height: 100%;
+				overflow: hidden;
+				
+				
+			}
+			.cabeçalho{grid-area:cabeçalho}
+			#principal{grid-area: principal;}
+			#contato{
+				grid-area:contato;
+				position: absolute;
+				left: 0;
+			}
+			#novidades{
+				grid-area:novidades;
+				position: absolute;
+				right: 0;
+				
+			}
+			.rodape{grid-area:rodape;}
+			.separador{
+				display: grid;
+				grid-template-areas: 
+					'cabeçalho cabeçalho cabeçalho cabeçalho cabeçalho cabeçalho'
+					'contato contato principal principal  novidades novidades'
+					'contato contato principal principal  novidades novidades'
+					'contato contato principal principal  novidades novidades'
+					'contato contato principal principal  novidades novidades ';
+				grid-gap:
+			}.menu-group{
+				padding: 0;
+			}
+			.menu-item{
+				font: 700 20px "Arial";
+				border: 2px solid black;
+				width: 100%;
+				margin-top: 20px;
+				padding-left: 20px;
+			}.menu-item a{
+				display: block;
+				
+			}
+			
+			
+		</style>
+		
+	</head>
+	<body>
+		<div class="separador" >
+			<header class="cabeçalho">
+				<h1 class="destaque">Cronometro</h1>
+			</header>
+			<aside class="full-lateral" id="contato">
+				<nav class="menu">
+					<h2>Contato</h2>
+					<ul class="menu-group">
+						<li class="menu-item">
+							<a href="#">Facebook</a>
+						</li>
+						<li class="menu-item">
+							<a href="#">Email</a>
+						</li>
+						<li class="menu-item">
+							Github
+						</li>
+						<li class="menu-item">
+							Celular
+						</li>
+					</ul>
+				</nav>
+			</aside>
+			<main id="principal">
+				<section class="cronometro">
+					<span id="hora"></span><span id="minuto"></span><span id="segundo"></span>
+				</section>	
+			</main>
+			<aside class="full-lateral" id="novidades"></aside>
+			<footer class="rodape">
+				<address>Desenvolvido por <span>Anderson Lucas</span></address>
+			</footer>
+		</div>
+	</body>
+	<script>
+	
+		(function(){
+			
+			setInterval(function(){
+				var data = new Date();
+				
+				document.querySelector("#hora").textContent    = data.getHours()+":";
+				document.querySelector("#minuto").textContent  = data.getMinutes()+":";
+				document.querySelector("#segundo").textContent = data.getSeconds();
+				console.log("oi");
+			},1000);
+		})();
+	</script>
+</html>
