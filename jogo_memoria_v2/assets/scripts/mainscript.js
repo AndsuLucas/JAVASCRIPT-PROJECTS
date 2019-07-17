@@ -18,7 +18,7 @@
 		"align-justify", "align-left"
 	]
 	//conta jogadas de dois em dois para testar acertos, depois zera
-	var   quantidadeDeJogadas         = 0;
+	var   quantidadeDeJogadasControle = 0;
 	//total de jogadas	
 	var   quantidadeDeJogadasContador = 0;
 	//quantidade de acertos do jogador		
@@ -49,12 +49,13 @@
 
 	}
 	embaralhasImagens(arrayImagensSrc);
-	
+	//checa acertos 
 	function checarJogada(elemento){
 		
+			document.querySelector("#jogadas").textContent = quantidadeDeJogadasContador;
 			if (elemento.getAttribute("src") === ultimoClick.getAttribute("src")){
 				pontos ++;
-				document.querySelector("#jogadas").textContent = pontos;
+				document.querySelector("#pontos").textContent = pontos;
 				elemento.setAttribute("sit", "acerto");
 				elemento.removeEventListener("click", mostrarImagem);
 				
@@ -64,13 +65,14 @@
 				
 			}else{					
 				
-				resetarImagem(1000);
+				resetarImagem(500);
 			
 			}
 			
 			document.querySelector("#jogadas").textContent = quantidadeDeJogadasContador;
 		
 	}
+	//coloca o fundo preto nas imagens que não tenham a sit (situação) === 'hit'
 	function resetarImagem(tempo){
 		setTimeout(function(){
 			imagens.forEach(function(imagem, posicao){
@@ -92,10 +94,10 @@
 		var id = this.getAttribute("id");
 		this.setAttribute("src", setarImagem(arrayImagensSrc[id]));
 		
-			quantidadeDeJogadas++;
+			quantidadeDeJogadasControle++;
 		
-		if (quantidadeDeJogadas === 2){
-			quantidadeDeJogadas = 0;
+		if (quantidadeDeJogadasControle === 2){
+			quantidadeDeJogadasControle = 0;
 			if (this !== ultimoClick){		
 				quantidadeDeJogadasContador ++;
 				checarJogada(this);	
