@@ -32,23 +32,21 @@
 	});
 	function checarJogada(elemento){
 		console.log(elemento === ultimoClick);
-		if ((ultimoClick !== undefined)&&(ultimoClick !== elemento)) {
+		
 			if (elemento.getAttribute("src") === ultimoClick.getAttribute("src")){
 				
 				elemento.setAttribute("sit", "acerto");
-				elemento.removeEventListener("click", mostrarImagem, true);
+				elemento.removeEventListener("click", mostrarImagem);
 				
 				ultimoClick.setAttribute("sit", "acerto")
-				ultimoClick.removeEventListener("click", mostrarImagem, true);
+				ultimoClick.removeEventListener("click", mostrarImagem);
+				console.log("igual");
 			}else{					
-				
+				console.log("diferente")
 				resetarImagem();
 
 			}
-		}else{
-			resetarImagem();
-
-		}
+		
 		quantidadeDeJogadas = 0;
 	}
 	function resetarImagem(){
@@ -59,7 +57,7 @@
 				}
 				
 			});
-		},1000);
+		},100);
 	}
 
 	function setarImagem (img, tipo = "svg"){
@@ -71,16 +69,18 @@
 	function mostrarImagem(){
 		var id = this.getAttribute("id");
 		this.setAttribute("src", setarImagem(arrayImagensSrc[id]));
-	
-		quantidadeDeJogadas++;
-
-		if (quantidadeDeJogadas === 2){
-			checarJogada(this);	
-
-		}else{
-			ultimoClick = this;
-			
+		if (this !== ultimoClick){
+			quantidadeDeJogadas++;
 		}
+			if (quantidadeDeJogadas === 2){
+				checarJogada(this);	
+
+			}else{
+				ultimoClick = this;
+			
+			}
+		
+		console.log(quantidadeDeJogadas);
 	}	
 	//trocando a ordem das posições do src 'arrayImagensSrc'
 	function embaralhasImagens(imgs){
