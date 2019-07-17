@@ -16,12 +16,16 @@
 		"alert-circle", "align-center",
 		"alert-octagon", "alert-triangle",  
 		"align-justify", "align-left"
-	 ]
-	//contador de imagens
-	var   quantidadeDeJogadas = 0;
+	]
+	//conta jogadas de dois em dois para testar acertos, depois zera
+	var   quantidadeDeJogadas         = 0;
+	//total de jogadas	
+	var   quantidadeDeJogadasContador = 0;
+	//quantidade de acertos do jogador		
+	var   pontos                      = 0;
 	
 	//adicionando evento de mostrar imagens aos elementos do dom
-	imagens.forEach(function(elemento,posicao){
+	imagens.forEach(function(elemento, posicao){
 		
 		elemento.addEventListener("click", mostrarImagem);
 		
@@ -49,7 +53,8 @@
 	function checarJogada(elemento){
 		
 			if (elemento.getAttribute("src") === ultimoClick.getAttribute("src")){
-				
+				pontos ++;
+				document.querySelector("#jogadas").textContent = pontos;
 				elemento.setAttribute("sit", "acerto");
 				elemento.removeEventListener("click", mostrarImagem);
 				
@@ -59,23 +64,24 @@
 				
 			}else{					
 				
-				resetarImagem();
-
+				resetarImagem(1000);
+			
 			}
-		
+			
+			document.querySelector("#jogadas").textContent = quantidadeDeJogadasContador;
 		
 	}
-	function resetarImagem(){
+	function resetarImagem(tempo){
 		setTimeout(function(){
 			imagens.forEach(function(imagem, posicao){
 				if (imagem.getAttribute("sit") !== "acerto"){
 					imagem.setAttribute("src", setarImagem(imagemPreta,"jpg"));
 				}
-				
-			});
-		},1000);
-	}
-
+					
+			});	
+		}, tempo);	
+	}	
+	
 	function setarImagem (img, tipo = "svg"){
 
 		return "assets/imagens/"+img+"."+tipo; 
@@ -86,29 +92,24 @@
 		var id = this.getAttribute("id");
 		this.setAttribute("src", setarImagem(arrayImagensSrc[id]));
 		
-		
 			quantidadeDeJogadas++;
 		
 		if (quantidadeDeJogadas === 2){
+			quantidadeDeJogadas = 0;
 			if (this !== ultimoClick){		
+				quantidadeDeJogadasContador ++;
 				checarJogada(this);	
-
 			}else{
 				resetarImagem();
-				quantidadeDeJogadas = 0;
 			
 			}
 
-			quantidadeDeJogadas = 0;
-			ultimoClick = undefined;
+			
+			
 		}else{
 			ultimoClick = this;
 		
 		}
 	}			
 		
-
-
-	console.log(arrayImagensSrc);
-
 })();
