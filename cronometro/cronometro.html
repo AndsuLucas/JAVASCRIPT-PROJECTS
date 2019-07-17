@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Cronometro</title>
+		<link rel="stylesheet" href="">
+		<style>
+			#cronometro{
+				max-width: 50%;
+				margin: auto;
+				border: 2px solid black;
+				text-align: center;
+				align-items: center;
+				border-radius: 5px 5px 5px 5px;
+			}#cronometro span{
+				font: 300 20px "Arial";
+			}button{
+				border-radius: 5px 5px 5px 5px;
+				border: none;
+				max-width: 100px;
+				max-height: 30px;
+				padding: 5px;
+				color: white;
+				cursor: pointer;
+
+			}#iniciar{
+				background-color: #0000ffad;
+			}#parar{
+				background-color: #ff0000ab;
+			}#retornar{
+				background-color: #0080009e;
+			}#resetar{
+				background-color: #000000ad;
+			}#iniciar:hover{
+				background-color: blue;
+			}#parar:hover{
+				background-color: red;
+			}#retornar:hover{
+				background-color: green;
+			}#resetar:hover{
+				background-color: black;
+			}#botoes{
+				margin: 0 auto;
+				max-width: 25%;
+				
+				align-items: center;
+				text-align: center;
+				padding-top: 5px;
+			}button:active{
+				padding: 10px;
+				box-shadow: black 2px 2px 2px 2px;
+			}
+		</style>
+	</head>
+	<body>
+		<main>
+			<div id="cronometro">
+				<span id="hora">Hora:</span>
+				<span id="minuto">Minuto:</span>
+				<span id="segundo">Segundo</span>
+			</div>
+			<div id="botoes">
+				<button id="iniciar">INICIAR</button>
+				<button id="parar">PARAR</button>
+				<button id="resetar">RESETAR</button>
+			</div>
+		</main>
+	</body>
+	<script>
+		(function(){
+
+			
+			var hour        = document.querySelector("#hora");
+			var minutes      = document.querySelector("#minuto");
+			var seconds      = document.querySelector("#segundo");
+			var secondsCount = 0;
+			var data         = new Date();
+			var itsPaused    = true; 
+			var stop         = document.querySelector("#parar");
+			var init         = document.querySelector("#iniciar");
+			var reset        = document.querySelector("#resetar");			
+			data.setHours(0);
+			data.setMinutes(0);
+			data.setSeconds(0);
+			
+			function timeStop(){
+				itsPaused = true;
+				
+			}
+			
+			function timeInit(){
+				itsPaused = false;
+			}
+
+			function timeReset(){
+				
+				data.setHours(0);
+				data.setMinutes(0);
+				data.setSeconds(0);
+				
+				hour.textContent    = data.getHours()+":";
+				minutes.textContent = data.getMinutes()+":";
+				seconds.textContent = data.getSeconds();	
+
+				secondsCount = 0;
+				
+			
+			}
+			
+
+			stop.addEventListener("click", timeStop);
+			init.addEventListener("click", timeInit);
+			reset.addEventListener("click", timeReset);
+			
+			var contagem = setInterval(function(){
+				
+				if (itsPaused) {
+					data.getTime();
+				}else{
+					secondsCount ++;
+					data.setSeconds(secondsCount);
+				}
+				hour.textContent    = data.getHours()+":";
+				minutes.textContent = data.getMinutes()+":";
+				seconds.textContent = data.getSeconds();	
+
+
+				if (parseInt(minutes.textContent) === 60){
+
+					data.setMinutes(0);
+
+				} 
+
+				if (secondsCount === 60) {
+
+					secondsCount = 0;
+
+				}	
+				
+			},1000);
+			
+
+
+		})();
+	</script>
+</html>

@@ -1,0 +1,38 @@
+.italico{
+	font-style: italic;
+}
+.bold{
+	font-weight: bold;	
+}
+body{
+	margin: 0;
+}
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	font-size: 17px;
+	font-weight: bold;
+	
+}
+p{
+	font-size: 20px;
+	text-align: justify;
+}.corte{
+	text-decoration: line-through;
+	
+}h2{
+	font-size: 30px;
+}main{
+	overflow: hidden;
+}.active{
+	padding: 5px;
+	color:#696969 !important;
+	text-decoration: underline;
+	list-style: circle;
+}figure{
+	margin: 0;
+}figcaption{
+	padding: 15px;
+}

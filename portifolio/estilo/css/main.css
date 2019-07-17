@@ -1,0 +1,160 @@
+.cabeçalho{
+	grid-area: header;
+	
+	background-color: #1c1c1c;
+	color: #E8E8E8;
+	align-items: center;
+	text-align: center;
+}
+.menu-navbar{
+	grid-area: menu;
+	height: 100%;
+	background-color: #1c1c1c;
+	width: 200px;
+}.conteudo-menu{
+	padding: 0;
+	position: fixed;
+}
+.menu-item{
+	margin: 20px 10px;
+	display: block;
+
+	
+}.menu-item img{
+	border-radius: 50%;
+}
+.menu-item a{
+	color: #E8E8E8;
+}
+.menu-item a:hover{
+	padding: 5px;
+	color:#696969 !important;
+	text-decoration: underline;
+}
+
+.principal{
+	grid-area: main;
+	padding: 20px;
+	
+}
+.rodape{
+	grid-area: footer;
+	align-items: center;
+	color: #E8E8E8;
+	background-color: #1c1c1c;
+	height: 50px; 
+}.rodape a{
+	color: #E8E8E8;
+}
+
+
+.container{
+	display: grid;
+	grid-template-areas:
+	'header header header header header header'
+	'menu  main main main main main'
+	'menu footer footer footer footer footer'
+
+}
+#qs-parte1{
+	grid-area: qs-parte1;
+	width: 99%
+}
+#qs-parte1 p{
+	margin-top: 0;
+}
+#qs-livro{
+	grid-area: qs-livro;
+}
+#qs-titulo{
+	grid-area: qs-titulo;
+	text-align: left;
+	
+}
+#quem-sou{
+	display: grid;
+	grid-template-areas:'qs-titulo qs-titulo qs-titulo qs-titulo qs-titulo qs-titulo'
+						'qs-parte1 qs-livro qs-livro qs-livro qs-livro qs-livro';
+	
+	grid-column-gap: 5px;
+}
+#obj-img{grid-area: obj-img;
+	width: 100%;
+	align-items: center;
+}
+#obj-img img{
+	margin: 0 auto;
+	width: 100%;
+}
+#obj-texto{grid-area: obj-texto;}
+
+#obj-metas{
+	display: grid;
+	grid-template-areas: 'obj-img obj-img obj-img obj-img  obj-img obj-img'
+						 'obj-texto obj-texto obj-texto obj-texto  obj-texto obj-texto';
+}
+#conhecimentos-imgs img{
+	width: 50px;
+	height: 50px;
+	border: 2px solid black;
+	border-radius: 5px 5px 5px  5px ;
+	cursor: pointer;
+	margin-left:  20px;
+
+}#conhecimentos-imgs{
+	grid-area: conhecimentos-imgs;
+	max-width: 800px;
+	margin: 0 auto;
+
+
+}
+#conhecimentos-imgs p{
+	text-align: center;
+}
+#conhecimentos-detalhe{
+	grid-area: conhecimentos-detalhe;
+
+}#conhecimentos-detalhe div{
+	/*padrão visível para não dar problema de javascript desabilitado */
+	
+}
+/* z-index sobrepoe alguns elementos */
+
+#mysql{
+	display: grid;
+	grid-template-areas:
+		'mysqltitulo mysqltitulo mysqltitulo mysqltitulo mysqltitulo mysqltitulo  '
+		'mysqlparagrafo mysqlparagrafo mysqlparagrafo mysqlparagrafo mysqlparagrafo mysqlparagrafo'
+		'mysqltxt mysqltxt mysqltxt mysqlimg mysqlimg mysqlimg' ;
+		grid-gap: 5px;
+}#mysql h2{
+	grid-area: mysqltitulo;
+}
+#mysql p{
+	grid-area: mysqlparagrafo;
+
+}#mysql img{
+	height: 200px;
+}
+
+#conhecimentos-mysql-texto{
+	grid-area: mysqltxt;
+}#conhecimentos-mysql-imagem{
+	grid-area: mysqlimg;
+
+}.img-portifolio{
+	max-width: 100%;
+	border: 2px solid black; /* mudar esta cor depois */
+	border-radius: 5px 5px 5px 5px;
+}
+.img-portifolio img{
+	width: 100%;
+	height: 500px;
+}
+.img-portifolio:hover img{
+	width: 100%;
+	
+}.fig-title{
+	text-align: center;
+
+}
