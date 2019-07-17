@@ -95,6 +95,7 @@
 
 			}else{
 				resetarImagem();
+				quantidadeDeJogadas = 0;
 			
 			}
 
